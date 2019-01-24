@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx # template.metadata.labels に記載したラベルを指定します。
+  replicas: 2 # この数だけ pod を立ち上げます。
+  template:
+    metadata:
+      labels:
+        app: nginx # 作成する pod に割り振るラベルを指定します。
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80

@@ -1,0 +1,5 @@
+FROM centos:latest
+
+RUN mkdir /var/log/envoy/
+COPY ./bin/service /usr/local/bin/srv
+CMD /usr/local/bin/srv

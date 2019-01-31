@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd $(dirname $0)/..
+
+echo "fetching dependencies..."
+go get google.golang.org/grpc
+go get golang.org/x/sys/unix
+echo "done"
+
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ./hello/bin/service ./hello
